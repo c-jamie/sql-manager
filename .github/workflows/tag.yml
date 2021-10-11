@@ -56,13 +56,20 @@ jobs:
       name: Run Integration Tests
       shell: bash
       env:
-        SQM_SER_GIN_MODE: debug
-        SQM_SER_HTTP_PORT: 8080
-        SQM_SER_DB_HOST: localhost
-        SQM_SER_DB_PORT: 5432
-        SQM_SER_DB_NAME: sqlm-int
-        SQM_SER_DB_USER: postgres
-        SQM_SER_DB_PW: postgres
+
+        SQLM_SER_GIN_MODE: debug
+        SQLM_SER_HTTP_PORT: 8081
+        SQLM_SER_TEST_MODE: integration
+        SQLM_SER_AUTH: http://0.0.0.0:8080/v1
+        SQLM_SER_DB_HOST: localhost
+        SQLM_SER_DB_PORT: 5432
+        SQLM_SER_DB_NAME: sqlm-int
+        SQLM_SER_DB_USER: postgres
+        SQLM_SER_DB_PW: postgres
+        SQLM_SER_GIT_URL: https://github.com/c-jamie/polar-sql.git
+        SQLM_SER_GIT_USERNAME: cjamie
+        SQLM_SER_GIT_TOKEN: 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
+
       run: |
         make test-server-ga
      - 
