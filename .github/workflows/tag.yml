@@ -76,4 +76,4 @@ jobs:
       name: Run Unit Tests
       shell: bash
       run: |
-        make test-server-ga
+        make test-client

@@ -109,7 +109,10 @@ run-client: check-dev
 test-client:
 	go test -count=1 -v ./clientlib/sql -run ${args}
 
+
+#######################
 # RELEASE
+#######################
 
 release:
 	git tag -a v${tag} -m "release v${tag}" && git push --follow-tags
