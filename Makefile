@@ -88,9 +88,14 @@ test-server-ga:
 
 # DB
 
-test-db: check-dev
-	docker rm -f test-db || true && \
-	docker run --name test-db -d -p $${TEST_DB_PORT}:5432 -e POSTGRES_USER=$${TEST_DB_USER} -e POSTGRES_DB=$${TEST_DB_NAME} -e POSTGRES_PASSWORD=$${TEST_DB_PW} postgres:latest && \
+test-db-dev: check-dev
+	docker rm -f test-db-dev || true && \
+	docker run --name test-db-dev -d -p $${TEST_DB_PORT}:5432 -e POSTGRES_USER=$${TEST_DB_USER} -e POSTGRES_DB=$${TEST_DB_NAME} -e POSTGRES_PASSWORD=$${TEST_DB_PW} postgres:latest && \
+	sleep 2s
+
+test-db-prod: check-prod
+	docker rm -f test-db-prod || true && \
+	docker run --name test-db-prod -d -p $${TEST_DB_PORT}:5432 -e POSTGRES_USER=$${TEST_DB_USER} -e POSTGRES_DB=$${TEST_DB_NAME} -e POSTGRES_PASSWORD=$${TEST_DB_PW} postgres:latest && \
 	sleep 2s
 
 #######################

@@ -72,6 +72,9 @@ func (lex *Lexer) Peek() (int, []byte) {
 func Parse(sql string) (*SQLDirectives, error) {
 	var sqlDir SQLDirectives
 	sqlDir.Dev.Keywords = make(map[string]string)
+	sqlDir.Prod.Keywords = make(map[string]string)
+	sqlDir.Local.Keywords = make(map[string]string)
+	sqlDir.Int.Keywords = make(map[string]string)
 	tokenizer := NewStringTokenizer(sql)
 	lexer := NewLexer(tokenizer)
 	id := lexer.cur_id
@@ -246,7 +249,17 @@ func (pds *SQLDirectives) parseKeyValues(lex *Lexer, env string) bool {
 		return false
 	} else {
 		id, buf = lex.Next()
-		pds.Dev.Keywords[key] = string(buf)
+
+		if env == "dev" {
+			pds.Dev.Keywords[key] = string(buf)
+		} else if env == "prod" {
+			pds.Prod.Keywords[key] = string(buf)
+		} else if env == "int" {
+			pds.Int.Keywords[key] = string(buf)
+		} else if env == "local" {
+			pds.Local.Keywords[key] = string(buf)
+		}
+
 	}
 	return true
 }

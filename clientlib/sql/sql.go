@@ -190,6 +190,7 @@ func (sql *SQLMngr) finalise() {
 
 	_, topKey := sql.parseDirectives(sql.Directives)
 
+	log.Debug(sql.Directives.Dev.Keywords, sql.Env)
 	for k, v := range topKey {
 		keywords[k] = v
 	}

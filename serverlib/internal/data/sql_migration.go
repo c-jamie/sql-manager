@@ -56,9 +56,9 @@ func (m SQLMigrationModel) Add(mig *SQLMigration) error {
 	}
 
 	query = `
-		select id from sql_migrations_latest where source_table = $1
+		select id from sql_migrations_latest where source_table = $1 and env = $2
 	`
-	args = []interface{}{mig.SourceTable}
+	args = []interface{}{mig.SourceTable, mig.Env}
 	result, err := m.DB.Exec(query, args...)
 
 	if err != nil {
