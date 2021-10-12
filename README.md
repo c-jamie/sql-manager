@@ -38,3 +38,8 @@ Step 3 - run the server
 cd ~/sql-manager
 make ENV=dev run-server
 ```
+
+
+## Tutorial
+
+See `docs/`
