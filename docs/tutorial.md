@@ -141,7 +141,7 @@ Now, lets run our SQL against the dev env.
 
 You'll notice that our templated SQL has access to all golang macros, and also the migration scripts which have been run against the database.
 
-Because migration script two has been run, we have access to column name_type.
+Because migration script two has been run, we have access to column `name_type`.
 
 ```
 /*
