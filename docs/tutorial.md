@@ -71,7 +71,7 @@ If you want to roll back migrations, run `migration set dev` again and you can s
 Then the next time you run migrations, it will rollback to the first migration.
 
 ```
-(base) cillairne@cillairne:~/code/sql-manager$ make ENV=dev run-client args='migration set dev'
+~/code/sql-manager$ make ENV=dev run-client args='migration set dev'
 ```
 
 Register the fist migration with the prod env.
